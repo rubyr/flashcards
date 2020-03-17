@@ -105,4 +105,9 @@ describe('Round', function() {
 
     expect(round.calculatePercentCorrect()).to.equal(50);
   });
+
+  it('can end', function() {
+    const round = new Round();
+    expect(round.endRound).to.be.a('function');
+  });
 });
