@@ -16,7 +16,56 @@ describe('Turn', function() {
   }); 
 
   it.skip('should store a guess', function() {
-    const turn = new Turn();
-    
+    const card = new Card(1, 'why?', ['because', 'why not', 'how'], 'why not');
+    const turn = new Turn('how', card);
+    expect(turn.guess).to.equal('how');
+  });
+
+  it.skip('should store a card', function() {
+    const card = new Card(1, 'why?', ['because', 'why not', 'how'], 'why not');
+    const turn = new Turn('how', card);
+    expect(turn.card).to.deep.equal(card);
+  });
+
+  it.skip('can return the guess', function() {
+    const card = new Card(1, 'why?', ['because', 'why not', 'how'], 'why not');
+    const turn = new Turn('how', card);
+    const guess = turn.returnGuess();
+    expect(guess).to.equal('why not');
+  });
+
+  it.skip('can return the card', function() {
+    const card = new Card(1, 'why?', ['because', 'why not', 'how'], 'why not');
+    const turn = new Turn('how', card);
+    const turnCard = turn.returnCard();
+    expect(turnCard).to.deep.equal(card);
+  });
+
+  it.skip('can evaluate a wrong guess', function() {
+    const card = new Card(1, 'why?', ['because', 'why not', 'how'], 'why not');
+    const turn = new Turn('how', card);
+    const result = turn.evaluateGuess();
+    expect(result).to.equal(false);
+  });
+
+  it.skip('can evaluate a right guess', function() {
+    const card = new Card(1, 'why?', ['because', 'why not', 'how'], 'why not');
+    const turn = new Turn('why not', card);
+    const result = turn.evaluateGuess();
+    expect(result).to.equal(true);
+  });
+
+  it.skip('can give feedback for an incorrect guess', function() {
+    const card = new Card(1, 'why?', ['because', 'why not', 'how'], 'why not');
+    const turn = new Turn('how', card);
+    const result = turn.giveFeedback();
+    expect(result).to.equal('incorrect!');
+  });
+
+  it.skip('can give feedback for a correct guess', function() {
+    const card = new Card(1, 'why?', ['because', 'why not', 'how'], 'why not');
+    const turn = new Turn('why not', card);
+    const result = turn.giveFeedback();
+    expect(result).to.equal('correct!');
   });
 });
