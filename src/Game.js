@@ -11,10 +11,9 @@ class Game {
     this.currentRound = undefined;
   }
 
-  printMessage(deck, round) {
-    // eslint-disable-next-line no-console
+  printMessage(deck) {
     console.log(`Welcome to FlashCards! You are playing with ${deck.countCards()} cards.
------------------------------------------------------------------------`);
+${'-'.repeat(70)}`);
   }
 
   printQuestion(round) {
@@ -31,6 +30,7 @@ class Game {
     const deck = new Deck(cards);
     this.currentRound = new Round(deck);
     this.printMessage(deck, this.currentRound);
+    this.printQuestion(this.currentRound);
   }
 }
 
