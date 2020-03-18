@@ -2,7 +2,7 @@
 
 A neato terminal-based flashcards app
 
-Video (will open in a new tab):
+Demo:
 [![asciicast](https://asciinema.org/a/SN3GDvdwXK9voNUpA6Bdds2rw.svg)](https://asciinema.org/a/SN3GDvdwXK9voNUpA6Bdds2rw)
 
 ## Setup
