@@ -29,15 +29,16 @@ const confirmUpdate = (id, round) => {
   }
 }
 
-async function main(round) {
+async function main(round, menu) {
   const currentRound = await getRound(round);
   const getAnswer = await inquirer.prompt(genList(currentRound));
   const getConfirm = await inquirer.prompt(confirmUpdate(getAnswer.answers, round));
 
   if(!round.returnCurrentCard()) {
     round.endRound();
+    menu.endGame();
   } else {
-    main(round);
+    main(round, menu);
   }
 }
 
