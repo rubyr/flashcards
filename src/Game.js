@@ -12,15 +12,15 @@ class Game {
   }
 
   printMessage(deck) {
-    console.log(`Welcome to FlashCards! You are playing with ${deck.countCards()} cards.
+    console.log(`You are playing with ${deck.countCards()} cards.
 ${'-'.repeat(70)}`);
   }
 
-  printQuestion(round) {
-    util.main(round);
+  printQuestion(round, menu) {
+    util.main(round, menu);
   }
 
-  start() {
+  start(menu) {
     const cards = [];
     prototypeQuestions.forEach(thing => {
       const card = new Card();
@@ -28,9 +28,10 @@ ${'-'.repeat(70)}`);
       cards.push(card);
     });
     const deck = new Deck(cards);
+    deck.shuffle();
     this.currentRound = new Round(deck);
     this.printMessage(deck, this.currentRound);
-    this.printQuestion(this.currentRound);
+    this.printQuestion(this.currentRound, menu);
   }
 }
 
