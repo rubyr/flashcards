@@ -5,7 +5,7 @@ class Round {
     this.deck = deck;
     this.turns = 0;
     this.incorrectGuesses = [];
-    this.over = false;
+    this.startTime = Date.now();
   }
 
   returnCurrentCard() {
@@ -27,7 +27,35 @@ class Round {
 
   endRound() {
     console.log(`** Round over! ** You answered ${this.calculatePercentCorrect()}% of the questions correctly!`);
-    this.over = true;
+
+    const toHHMMSS = (millis) => {
+      const seconds = (millis / 1000).toFixed(2);
+      const hrs = Math.floor(seconds / 3600);
+      const mins = Math.floor(seconds / 60);
+      const secs = (seconds % 60).toFixed(2);
+
+      let out = "";
+
+      if (hrs) {
+        out += `${hrs} hour${hrs > 1 ? "s" : ""}, `;
+      }
+      if (mins) {
+        out += `${mins} minute${mins > 1 ? "s" : ""}, `;
+      }
+      if (secs) {
+        out += `${secs} second${secs !== 1 ? "s" : ""}`;
+      }
+      if (out.split(', ').length > 1) {
+        const i = out.lastIndexOf(', ');
+        const begin = out.substr(0, i);
+        const end = out.substr(i + 2);
+        out = begin + " and " + end;
+      }
+      return out;
+    }
+
+    const totalTime = (Date.now() - this.startTime);
+    console.log(`It took you ${toHHMMSS(totalTime)} to get through the deck. That's an average of ${toHHMMSS(totalTime / this.deck.countCards())} per card!`);
   }
 }
 

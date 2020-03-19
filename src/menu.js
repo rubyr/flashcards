@@ -22,7 +22,7 @@ class Menu {
     });
   }
 
-  async startGame() {
+  startGame() {
     const game = new Game();
     game.start(this);
   }
